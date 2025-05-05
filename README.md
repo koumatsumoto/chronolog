@@ -1,3 +1,41 @@
+# ChronoLog for Next.js
+
+ChronoLogは、独自形式「ChronoLog (`.clog`)」で記述された時系列メモをパースし、Web UI上で可視化するアプリケーションです。
+
+## 概要
+
+- **目的:** `.clog` ファイルで時系列メモを管理し、タイムライン形式で可視化
+- **ターゲットユーザー:** 調査記録、研究ノート、プロジェクトログ、思考メモなどを時系列で管理したいユーザー
+- **開発言語:** TypeScript (Next.js)
+
+## ChronoLog (`.clog`) ファイル形式
+
+- 拡張子: `.clog`
+- UTF-8 テキスト
+- メモ区切り: 空行または `---`
+- メタデータ: `@topic`, `@time`, `@link`, `@tags` など
+- 内容: メタデータ以降のテキスト
+- グラフ構造: `[ノードA] -> [ノードB]: ラベル` 形式で記述
+- コメント: `#` で始まる行
+
+### サンプル
+
+```text
+@topic: プロジェクトX 初期調査
+@time: 2025-04-20 10:00:00
+最初の要求仕様を確認。 @id: req-check
+
+---
+
+@topic: プロジェクトX 初期調査
+@time: 2025-04-22 14:30:00
+不明点について担当者に質問メール送信。 @id: question-sent
+
+[req-check] -> [question-sent]: 不明点解消のため
+```
+
+---
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
