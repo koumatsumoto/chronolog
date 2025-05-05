@@ -6,9 +6,7 @@ export default function Home() {
   const [input, setInput] = useState("");
   let memo: ChronologMemo | null = null;
   try {
-    memo = input.trim()
-      ? ChronologParser.parse(input, "20250101.clog")
-      : null;
+    memo = input.trim() ? ChronologParser.parse(input, "20250101.clog") : null;
   } catch {
     memo = null;
   }
