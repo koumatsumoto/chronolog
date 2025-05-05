@@ -51,7 +51,14 @@ Chronologの書き方・ファイル仕様については [docs/clog-format-spec
 - **ChronoLog パーサー:**
   - 正規表現や文字列処理によるカスタムパーサーを実装。
 - **状態管理:**
+
   - Extension Host (Node.js) と Webview (Browser) 間でのデータ通信には VS Code API の `Webview.postMessage()` と `window.addEventListener('message')` を使用。
+
+- **CI/CD:**
+  - GitHub Actionsを利用し、CI（`npm run ci`によるテスト・Lint）とGitHub Pagesへの自動デプロイを実施。
+  - `.github/workflows/ci.yml`でワークフローを管理。
+    - mainブランチへのpushまたはPRでCIを実行。
+    - mainブランチへのpush時はビルド成果物（`out/`）をGitHub Pagesにデプロイ。
 
 ### 5. 開発ステップ
 
