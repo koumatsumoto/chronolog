@@ -52,6 +52,12 @@ npm run test
 npm run build
 ```
 
+#### Next.js スタンドアロン/エクスポートビルド設定
+
+- `next.config.ts` で `output: "export"` を指定し、静的エクスポート（standalone build）に対応しています。
+- GitHub Pages での公開時は `basePath` が `/chronolog` となるように設定されています。
+- 本番環境では `process.env.NODE_ENV === "production"` の場合に `basePath` が有効になります。
+
 ### 5. 実装後の一括確認
 
 実装後は以下を実行してコードが適切であることを確認してください。
