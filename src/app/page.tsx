@@ -1,10 +1,17 @@
 "use client";
 import { useState } from "react";
-import { ChronologParser, ChronologMemo } from "../parser/ChronologParser";
+import { ChronologParser, ChronologMemo } from "../lib/ChronologParser";
 
 export default function Home() {
   const [input, setInput] = useState("");
-  const memos: ChronologMemo[] = ChronologParser.parse(input);
+  let memo: ChronologMemo | null = null;
+  try {
+    memo = input.trim()
+      ? ChronologParser.parse(input, "20250101.clog")
+      : null;
+  } catch {
+    memo = null;
+  }
 
   return (
     <div className="min-h-screen p-8 flex flex-col items-center gap-8">
@@ -17,37 +24,32 @@ export default function Home() {
       />
       <div className="w-full max-w-2xl border rounded p-4 bg-gray-50">
         <h2 className="text-lg font-semibold mb-2">プレビュー</h2>
-        {memos.length === 0 ? (
+        {!memo ? (
           <div className="text-gray-400">パース結果なし</div>
         ) : (
-          <ul className="space-y-4">
-            {memos.map((memo, idx) => (
-              <li key={idx} className="border-b pb-2">
-                <div className="text-sm text-gray-600">
-                  <span className="font-bold">topic:</span> {memo.metadata.topic ?? "-"}
-                  {memo.metadata.time && (
-                    <>
-                      {" "}
-                      <span className="font-bold">time:</span> {memo.metadata.time}
-                    </>
-                  )}
-                  {memo.metadata.links && memo.metadata.links.length > 0 && (
-                    <>
-                      {" "}
-                      <span className="font-bold">links:</span> {memo.metadata.links.join(", ")}
-                    </>
-                  )}
-                  {memo.id && (
-                    <>
-                      {" "}
-                      <span className="font-bold">id:</span> {memo.id}
-                    </>
-                  )}
-                </div>
-                <pre className="whitespace-pre-wrap mt-1">{memo.content}</pre>
-              </li>
-            ))}
-          </ul>
+          <div className="space-y-2">
+            <div>
+              <span className="font-bold">日時:</span> {memo.datetime.toISOString()}
+            </div>
+            <div>
+              <span className="font-bold">タイトル:</span> {memo.title}
+            </div>
+            <div>
+              <span className="font-bold">タグ:</span> {memo.tags.join(", ") || "-"}
+            </div>
+            <div>
+              <span className="font-bold">プロパティ:</span>{" "}
+              {Object.keys(memo.properties).length === 0
+                ? "-"
+                : Object.entries(memo.properties)
+                    .map(([k, v]) => `${k}=${v}`)
+                    .join(", ")}
+            </div>
+            <div>
+              <span className="font-bold">本文:</span>
+              <pre className="whitespace-pre-wrap mt-1">{memo.body}</pre>
+            </div>
+          </div>
         )}
       </div>
     </div>
