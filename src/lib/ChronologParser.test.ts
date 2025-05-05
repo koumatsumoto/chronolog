@@ -1,8 +1,28 @@
-// src/lib/ChronologParser.test.ts
 import { describe, it, expect } from "vitest";
 import { ChronologParser } from "./ChronologParser";
 
 describe("ChronologParser.parse", () => {
+  it("parses text as if input from tiptap editor", () => {
+    // tiptapのgetText()はプレーンテキストを返す想定
+    const text = `# タイトル
+本文1
+本文2 #tag1
+@key1:value1 @key2
+#tag2
+`;
+    const filename = "20250505.clog";
+    const memo = ChronologParser.parse(text, filename);
+
+    expect(memo.title).toBe("タイトル");
+    expect(memo.body).toBe("本文1\n本文2 #tag1\n@key1:value1 @key2");
+    expect(memo.tags).toEqual(["#tag1", "#tag2"]);
+    expect(memo.properties).toEqual({ key1: "value1", key2: true });
+    expect(memo.datetime).toBeInstanceOf(Date);
+    expect(memo.datetime.getFullYear()).toBe(2025);
+    expect(memo.datetime.getMonth()).toBe(4); // May (0-based)
+    expect(memo.datetime.getDate()).toBe(5);
+  });
+
   it("parses title, body, tags, and properties", () => {
     const text = `# タイトル
 本文1
