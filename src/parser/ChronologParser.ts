@@ -4,7 +4,7 @@ export interface ChronologMemo {
     topic?: string;
     time?: string;
     links?: string[];
-    [key: string]: any;
+    [key: string]: string | string[] | undefined;
   };
   content: string;
   id?: string;
