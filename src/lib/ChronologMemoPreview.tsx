@@ -1,4 +1,3 @@
-import React from "react";
 import { ChronologMemo } from "./ChronologParser";
 
 type ChronologMemoPreviewProps = {

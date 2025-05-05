@@ -52,8 +52,15 @@ Chronologの書き方・ファイル仕様については [docs/clog-format-spec
 - **ChronoLog パーサー:**
   - 正規表現や文字列処理によるカスタムパーサーを実装。
 - **ChronologMemoPreview コンポーネント:**
+
   - ChronologMemo オブジェクトの内容（日時・タイトル・タグ・プロパティ・本文）を受け取り、プレビュー表示する React コンポーネント。
   - 単体テスト可能な形で `src/lib/ChronologMemoPreview.tsx` に実装。
+
+- **TypeScript 設定:**
+
+  - `tsconfig.json` の `jsx` オプションは `"react-jsx"` を指定し、React 18 以降の新しい JSX 変換方式に対応。
+  - これにより、各 `.tsx` ファイルでの `import React from "react";` は不要となるため、順次削除する。
+
 - **状態管理:**
 
   - Extension Host (Node.js) と Webview (Browser) 間でのデータ通信には VS Code API の `Webview.postMessage()` と `window.addEventListener('message')` を使用。
