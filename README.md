@@ -8,7 +8,7 @@ ChronoLogは、独自形式「ChronoLog (`.clog`)」で記述された時系列�
 - **ターゲットユーザー:** 調査記録、研究ノート、プロジェクトログ、思考メモなどを時系列で管理したいユーザー
 - **開発言語:** TypeScript (Next.js)
 
-## ChronoLog (`.clog`) ファイル形式
+## ChronoLog (`.clog`) の仕様
 
 Chronologの書き方・ファイル仕様については [docs/clog-format-specification.md](docs/clog-format-specification.md) を参照してください。
 
@@ -22,17 +22,8 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+## デプロイ
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- 本プロジェクトは GitHub Actions を利用して GitHub Pages へ自動デプロイされています。
+- デプロイ先URL: [https://koumatsumoto.github.io/chronolog/](https://koumatsumoto.github.io/chronolog/)
+- デプロイフローやCI/CDの詳細は [docs/specification.md](docs/specification.md) を参照してください。
