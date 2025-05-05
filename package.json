@@ -8,7 +8,8 @@
     "build": "next build",
     "fmt": "prettier -w .",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "ci": "npm run fmt && npm run lint && npm run test && npm run build"
   },
   "dependencies": {
     "next": "15.3.1",
