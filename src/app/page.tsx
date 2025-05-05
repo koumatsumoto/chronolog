@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { ChronologParser, ChronologMemo } from "../lib/ChronologParser";
 import { LexicalEditor } from "../lib/LexicalEditor";
+import { ChronologMemoPreview } from "../lib/ChronologMemoPreview";
 
 export default function Home() {
   const [input, setInput] = useState("");
@@ -21,33 +22,7 @@ export default function Home() {
       </div>
       <div className="w-full max-w-2xl border rounded p-4 bg-gray-50">
         <h2 className="text-lg font-semibold mb-2">プレビュー</h2>
-        {!memo ? (
-          <div className="text-gray-400">パース結果なし</div>
-        ) : (
-          <div className="space-y-2">
-            <div>
-              <span className="font-bold">日時:</span> {memo.datetime.toISOString()}
-            </div>
-            <div>
-              <span className="font-bold">タイトル:</span> {memo.title}
-            </div>
-            <div>
-              <span className="font-bold">タグ:</span> {memo.tags.join(", ") || "-"}
-            </div>
-            <div>
-              <span className="font-bold">プロパティ:</span>{" "}
-              {Object.keys(memo.properties).length === 0
-                ? "-"
-                : Object.entries(memo.properties)
-                    .map(([k, v]) => `${k}=${v}`)
-                    .join(", ")}
-            </div>
-            <div>
-              <span className="font-bold">本文:</span>
-              <pre className="whitespace-pre-wrap mt-1">{memo.body}</pre>
-            </div>
-          </div>
-        )}
+        <ChronologMemoPreview memo={memo} />
       </div>
     </div>
   );

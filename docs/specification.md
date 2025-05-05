@@ -51,6 +51,9 @@ Chronologの書き方・ファイル仕様については [docs/clog-format-spec
   - **タイムライン UI:** 自作、または `vis-timeline` (vis-network と同じシリーズ) や他のライブラリを活用。
 - **ChronoLog パーサー:**
   - 正規表現や文字列処理によるカスタムパーサーを実装。
+- **ChronologMemoPreview コンポーネント:**
+  - ChronologMemo オブジェクトの内容（日時・タイトル・タグ・プロパティ・本文）を受け取り、プレビュー表示する React コンポーネント。
+  - 単体テスト可能な形で `src/lib/ChronologMemoPreview.tsx` に実装。
 - **状態管理:**
 
   - Extension Host (Node.js) と Webview (Browser) 間でのデータ通信には VS Code API の `Webview.postMessage()` と `window.addEventListener('message')` を使用。
