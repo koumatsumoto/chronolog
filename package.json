@@ -7,9 +7,10 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "fmt": "prettier -w .",
+    "fmt:check": "prettier -c .",
     "start": "next start",
     "lint": "next lint",
-    "ci": "npm run fmt && npm run lint && npm run test && npm run build"
+    "ci": "npm run fmt:check && npm run lint && npm run test && npm run build"
   },
   "dependencies": {
     "next": "15.3.1",
