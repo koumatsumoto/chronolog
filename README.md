@@ -16,33 +16,9 @@ Chronologの書き方・ファイル仕様については [docs/clog-format-spec
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+## 開発・セットアップ手順
 
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-## Code Formatting
-
-To format the codebase using Prettier, run:
-
-```bash
-npm run fmt
-```
-
-This will automatically format all files in the project.
+開発環境のセットアップやフォーマット・テスト・ビルド等の詳細な手順は [docs/development.md](docs/development.md) を参照してください。
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
